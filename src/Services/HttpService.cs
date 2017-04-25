@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace naughty_strings_runner.Services
 {
@@ -8,9 +9,17 @@ namespace naughty_strings_runner.Services
 
     public class HttpService : IHttpService
     {
-        private HttpClient GetHttpClient()
+        private readonly HttpClient _httpClient;
+
+        public HttpService()
         {
-            return new HttpClient();
+            _httpClient = new HttpClient();
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", "naughty-strings-runner");
+        }
+
+        public async Task<HttpResponseMessage> Get(string url)
+        {
+            return await _httpClient.GetAsync(url);
         }
     }
 }
