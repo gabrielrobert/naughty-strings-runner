@@ -28,7 +28,7 @@ namespace naughty_strings_runner
             serviceCollection.AddSingleton(new LoggerFactory()
                 .AddConsole()
                 .AddDebug());
-            serviceCollection.AddLogging(); 
+            serviceCollection.AddLogging();
 
             // build configuration
             var configuration = new ConfigurationBuilder()
