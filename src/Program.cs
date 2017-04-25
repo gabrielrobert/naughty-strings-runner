@@ -32,14 +32,14 @@ namespace naughty_strings_runner
 
             // build configuration
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath($"{Directory.GetCurrentDirectory()}/src")
                 .AddJsonFile("app-settings.json", false)
                 .Build();
             serviceCollection.AddOptions();
             serviceCollection.Configure<AppSettings>(configuration.GetSection("Configuration"));
 
             // add services
-            serviceCollection.AddTransient<ITestService, TestService>();
+            serviceCollection.AddTransient<INaughtyStringsProvider, NaughtyStringsProvider>();
 
             // add app
             serviceCollection.AddTransient<App>();
