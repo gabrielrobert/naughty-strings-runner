@@ -1,5 +1,6 @@
 {
   "Configuration": {
-    "Title": "naughty-strings-runner"
+    "Title": "naughty-strings-runner",
+    "DefaultDomain": "localhost:5102"
   }
 }
