@@ -8,15 +8,15 @@ namespace naughty_strings_runner
 
     public class App
     {
-        private readonly ITestService _testService;
+        private readonly INaughtyStringsProvider _naughtyStringsProvider;
         private readonly ILogger<App> _logger;
         private readonly AppSettings _config;
 
-        public App(ITestService testService,
+        public App(INaughtyStringsProvider naughtyStringsProvider,
             IOptions<AppSettings> config,
             ILogger<App> logger)
         {
-            _testService = testService;
+            _naughtyStringsProvider = naughtyStringsProvider;
             _logger = logger;
             _config = config.Value;
         }
@@ -24,7 +24,7 @@ namespace naughty_strings_runner
         public void Run()
         {
             _logger.LogInformation($"This is a console application for {_config.Title}");
-            _testService.Run();
+            _naughtyStringsProvider.GetStrings();
             System.Console.ReadKey();
         }
     }
