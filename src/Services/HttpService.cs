@@ -1,10 +1,12 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace naughty_strings_runner.Services
 {
     public interface IHttpService
     {
+        Task<HttpResponseMessage> Get(string url);
     }
 
     public class HttpService : IHttpService
@@ -15,6 +17,7 @@ namespace naughty_strings_runner.Services
         {
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "naughty-strings-runner");
+            _httpClient.Timeout = TimeSpan.FromSeconds(10);
         }
 
         public async Task<HttpResponseMessage> Get(string url)
