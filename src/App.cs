@@ -31,15 +31,12 @@ namespace naughty_strings_runner
 
         public void Run()
         {
-            _logger.LogInformation($"This is a console application for {_config.Title}");
-
             var entries = Task.Run(() => _naughtyStringsProvider.GetStrings()).Result;
-            var queries = entries.Select(entry => $"http://{_config.DefaultDomain}/produits?Search={entry}");
 
             var results = new List<HttpResponseMessage>();
-            foreach (var query in queries)
+            foreach (var entry in entries)
             {
-                var result = Task.Run(() => _httpService.Get(query)).Result;
+                var result = Task.Run(() => _httpService.Get($"http://{_config.DefaultDomain}/produits?Search={entry}")).Result;
                 results.Add(result);
             }
 
