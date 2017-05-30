@@ -1,4 +1,5 @@
 using System.IO;
+using EntryPoint;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -19,7 +20,7 @@ namespace naughty_strings_runner
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
             // run app
-            serviceProvider.GetService<App>().Run();
+            Cli.Execute(serviceProvider.GetService<App>(), args);
         }
 
         private static void ConfigureServices(IServiceCollection serviceCollection)
