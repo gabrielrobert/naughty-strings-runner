@@ -7,6 +7,18 @@ This software allows you to get the last updated file of the ["Big List of Naugh
 
 Covering edge-cases is very important. In order to offer high quality software, this tool should be used systematically before putting any project into production.
 
+## Usage
+
+You can execute the given command to have all possible arguments.
+
+```shell
+naughty-strings-runner run --help
+```
+
+#### Posssible Arguments:
+
+- `--domain`  ex: `--domain "http://localhost:4000"`
+
 ## Installation
 
 Clone the project, compile and just run it using the .EXE file.
