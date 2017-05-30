@@ -18,6 +18,7 @@ naughty-strings-runner run --help
 #### Posssible Arguments:
 
 - `--domain`  ex: `--domain "http://localhost:4000"`
+- `--query-param`  ex: `--query-param "productSearch"`
 
 ## Installation
 
