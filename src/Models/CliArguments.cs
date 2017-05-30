@@ -1,4 +1,5 @@
-﻿using EntryPoint;
+﻿using System;
+using EntryPoint;
 
 namespace naughty_strings_runner.Models
 {
@@ -13,5 +14,22 @@ namespace naughty_strings_runner.Models
         [OptionParameter("domain")]
         [Help("Domain including protocal")]
         public string Domain { get; set; }
+
+        [OptionParameter("query-param")]
+        [Help("Name of the parameter that will be used for requests")]
+        public string QueryParameter { get; set; }
+
+        public void EnsureIsValid()
+        {
+            if (string.IsNullOrEmpty(Domain))
+            {
+                throw new Exception($"Please provide a valid domain: {Domain}");
+            }
+
+            if (string.IsNullOrEmpty(QueryParameter))
+            {
+                throw new Exception($"Please provide a valid query parameter: {QueryParameter}");
+            }
+        }
     }
 }
