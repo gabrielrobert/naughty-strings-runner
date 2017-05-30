@@ -40,6 +40,7 @@ namespace naughty_strings_runner
 
             // add services
             serviceCollection.AddTransient<INaughtyStringsProvider, NaughtyStringsProvider>();
+            serviceCollection.AddTransient<IHttpService, HttpService>();
 
             // add app
             serviceCollection.AddTransient<App>();
